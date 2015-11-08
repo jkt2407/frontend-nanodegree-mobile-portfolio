@@ -497,6 +497,9 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
+// store references to the sliding pizzas in our own array for efficiency
+var slidingPizzas = [];
+
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
@@ -509,9 +512,8 @@ function updatePositions() {
     phaseArray[j] = Math.sin((document.body.scrollTop / 1250) + (j % 5));
   }
 
-  var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
-    items[i].style.left = items[i].basicLeft + 100 * phaseArray[i % 5] + 'px';
+  for (var i = 0; i < slidingPizzas.length; i++) {
+    slidingPizzas[i].style.left = slidingPizzas[i].basicLeft + 100 * phaseArray[i % 5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -533,13 +535,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // compute how many colums we need to handle
   var s = 256;
   var cols = (Math.floor(screen.width / s)) + 1;
-  console.log("cols = "+  cols);
 
   // now create as many pizzas as fit on the screen
   for (var i = 0; i < 200; i++) {
     // if we're off the bottom of the screen, no need to create any more pizzas
     var y = (Math.floor(i / cols) * s);
-    console.log("y = " + y);
     if (y > screen.height) {
         break;
     }
@@ -551,6 +551,9 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.basicLeft = (i % cols) * s;
     elem.style.top = y + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
+
+    // store a reference to this pizza in our own array for later use
+    slidingPizzas[i] = elem;
   }
   console.log("Created " + i + " pizzas");
   updatePositions();
