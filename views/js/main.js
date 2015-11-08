@@ -502,10 +502,16 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+  // since there are only 5 possible values for phase, we can put them
+  // in a lookup table rather than compute them every time
+  var phaseArray = [];
+  for (var j = 0; j < 5; j++) {
+    phaseArray[j] = Math.sin((document.body.scrollTop / 1250) + (j % 5));
+  }
+
   var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    items[i].style.left = items[i].basicLeft + 100 * phaseArray[i % 5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
