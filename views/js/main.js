@@ -529,14 +529,18 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 8;
-  var s = 256;
 
+  // compute how many colums we need to handle
+  var s = 256;
+  var cols = (Math.floor(screen.width / s)) + 1;
+  console.log("cols = "+  cols);
+
+  // now create as many pizzas as fit on the screen
   for (var i = 0; i < 200; i++) {
     // if we're off the bottom of the screen, no need to create any more pizzas
     var y = (Math.floor(i / cols) * s);
+    console.log("y = " + y);
     if (y > screen.height) {
-        console.log("Created " + i + " pizzas");
         break;
     }
     var elem = document.createElement('img');
@@ -548,5 +552,6 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = y + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
+  console.log("Created " + i + " pizzas");
   updatePositions();
 });
