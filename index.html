@@ -7,9 +7,9 @@
     <meta name="author" content="Keith Thomson">
     <title>Cameron Pittman: Portfolio</title>
 
-    <!-- Removed the web font Open Sans, no need to use it -->
+    <!-- optimization: removed the web font Open Sans, no need to use it -->
 
-    <!-- inline those parts of the main css that are used on index.html - we will load the whole css file asynchronously in javascript later -->
+    <!-- optimization: inline those parts of the main css that are used in index.html - we will load the whole css file asynchronously in javascript later -->
     <style>
       html {
         font-size: 100%;
@@ -107,7 +107,7 @@
       <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
     </footer>
 
-    <!-- load the main style sheet asynchronously -->
+    <!-- optimization: load the main style sheet asynchronously -->
     <script>
       var cb = function() {
         var l = document.createElement('link'); l.rel = 'stylesheet';
