@@ -1,7 +1,7 @@
-##FEND P4: Website Performance Optimization - Final Project
+###FEND P4: Website Performance Optimization - Final Project
 Student: Keith Thomson
 
-### Where to find it
+#### Where to find it
 
 Source code can be found in this github repository in branch "gh-pages":
 https://github.com/jkt2407/frontend-nanodegree-mobile-portfolio
@@ -9,9 +9,9 @@ https://github.com/jkt2407/frontend-nanodegree-mobile-portfolio
 Website can be accessed through Github pages:
 http://jkt2407.github.io/frontend-nanodegree-mobile-portfolio/
 
-### Final Project Notes
+#### Final Project Notes
 
-#### 1. Critical Rendering Path for index.html
+##### 1. Critical Rendering Path for index.html
 Optimizations:
 - Reduced the size of img/prfilepic.jpg and view/images/pizzeria.jpg
 - Removed the Google font "Open Sans" and used Arial instead
@@ -26,7 +26,7 @@ Results: PageSpeed scores for
 - Mobile: 95/100
 - Desktop: 97/100
 
-#### 2. Framerate for pizza.html
+##### 2. Framerate for pizza.html
 Optimizations:
 - In views/js/main.js,
  - Limited the number of rows and columns of pizzas created to the size of the screen
@@ -39,7 +39,7 @@ Results:
 
 Timeline display in DevTools shows consistent frame times at 60 fps or better
 
-#### 3. Computation Efficiency for pizza.html
+##### 3. Computation Efficiency for pizza.html
 Optimizations:
 - In views/js/main.js, changePizzaSizes()
  - removed document.querySelectorAll() from "for" loop
@@ -47,9 +47,9 @@ Optimizations:
 
 Results:
 
-Time to resize pizzas is about 1. seconds, as reported by console
+Time to resize pizzas is about 1.3 seconds, as reported by console
 
-============================================================
+ ---
 
 This was original contents of readme file:
 
