@@ -11,13 +11,13 @@ http://jkt2407.github.io/frontend-nanodegree-mobile-portfolio/
 
 #### Final Project Notes
 
-##### 1. Critical Rendering Path for index.html
+#### 1. Critical Rendering Path for index.html
 Optimizations:
 - Reduced the size of img/prfilepic.jpg and view/images/pizzeria.jpg
 - Removed the Google font "Open Sans" and used Arial instead
-- Put some styles from css/style.css (the styles that are used by index.html) in line in <head> and loaded the whole file css/style.css later, asynchronously
+- Put some styles from css/style.css (the styles that are used by index.html) in line in header section and loaded the whole file css/style.css later, asynchronously
 - Removed Google Analytics JavaScript
-- Added a media query to <link href="css/print.css"> so the link won't block rendering for screen
+- Added a media query to the link to css/print.css so it won't block rendering for screen
 
 To see these changes, search for "optimization:" in index.html.
 
@@ -26,10 +26,10 @@ Results: PageSpeed scores for
 - Mobile: 95/100
 - Desktop: 97/100
 
-##### 2. Framerate for pizza.html
+#### 2. Framerate for pizza.html
 Optimizations:
 - In views/js/main.js,
- - Limited the number of rows and columns of pizzas created to the size of the screen
+ - Limited the number of rows and columns of pizzas created -- just create as many as fit on screen
  - Kept an array of pizzas so we can access them quickly rather than having to traverse the DOM looking for them
  - In updatePositions(), made computation of "phase" a table lookup rather than recomputing it every time
 
@@ -37,9 +37,20 @@ To see these changes, search for "optimization:" in views/js/main.js.
 
 Results:
 
-Timeline display in DevTools shows consistent frame times at 60 fps or better
+- Timeline display in DevTools shows consistent frame times at 60 fps or better
+- Console output shows
+	main.js:500 Average time to generate last 10 frames: 0.16400000000139697ms
+	main.js:500 Average time to generate last 10 frames: 0.17749999999650753ms
+	main.js:500 Average time to generate last 10 frames: 0.15349999999743885ms
+	main.js:500 Average time to generate last 10 frames: 0.14299999999348073ms
+	main.js:500 Average time to generate last 10 frames: 0.14100000000325963ms
+	main.js:500 Average time to generate last 10 frames: 0.14750000000349245ms
+	main.js:500 Average time to generate last 10 frames: 0.1564999999885913ms
+	main.js:500 Average time to generate last 10 frames: 0.14449999999487773ms
+	main.js:500 Average time to generate last 10 frames: 0.13600000000442378ms
+	main.js:500 Average time to generate last 10 frames: 0.14849999999860303ms
 
-##### 3. Computation Efficiency for pizza.html
+#### 3. Computation Efficiency for pizza.html
 Optimizations:
 - In views/js/main.js, changePizzaSizes()
  - removed document.querySelectorAll() from "for" loop
@@ -47,9 +58,9 @@ Optimizations:
 
 Results:
 
-Time to resize pizzas is about 1.3 seconds, as reported by console
+- Time to resize pizzas is about 1.3 seconds, as reported by console
 
- ---
+ ***
 
 This was original contents of readme file:
 
