@@ -1,3 +1,29 @@
+##FEND P4: Website Performance Optimization Project
+
+### General Instructions
+
+Source code can be found in the github repository:
+https://github.com/jkt2407/frontend-nanodegree-mobile-portfolio
+
+Website can be accessed through Github pages:
+http://jkt2407.github.io/frontend-nanodegree-mobile-portfolio/
+
+### Projects
+
+#### Critical Rendering Path for index.html
+Optimizations:
+- Removed the Google font "Open Sans" and used Arial instead
+- Put the parts of style.css that are used by index.html in line in <head> and load the whole file style.css later, asynchronously
+- Removed Google Analytics JavaScript
+- Added a media query to link for print.css so the link won't block rendering for screen
+
+To see these changes, search for "optimization:" in index.html.
+
+Results: PageSpeed scores for
+	http://jkt2407.github.io/frontend-nanodegree-mobile-portfolio/index.html
+- Mobile: 95/100
+- Desktop: 97/100
+
 ============================================================
 
 This was original contents of readme file:
