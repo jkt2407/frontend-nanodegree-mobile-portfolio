@@ -420,43 +420,46 @@ var resizePizzas = function(size) {
 
   changeSliderLabel(size);
 
-   // Iterates through pizza elements on the page and changes their widths
+  // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
+  function determineDx (elem, size) {
+    var oldwidth = elem.offsetWidth;
+    var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
+    var oldsize = oldwidth / windowwidth;
+
+    // TODO: change to 3 sizes? no more xl?
+    // Changes the slider value to a percent width
+    function sizeSwitcher (size) {
+      switch(size) {
+        case "1":
+          return 0.25;
+        case "2":
+          return 0.3333;
+        case "3":
+          return 0.5;
+        default:
+          console.log("bug in sizeSwitcher");
+      }
+    }
+
+    var newsize = sizeSwitcher(size);
+    var dx = (newsize - oldsize) * windowwidth;
+
+    return dx;
+  }
+
+  // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
 
     // optimization: pull document query out of the for loop
     var sizingPizzas = document.querySelectorAll(".randomPizzaContainer");
 
-   // optimization: pull windowwidth calculation out of the for loop, we only need to do it once
-    var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
+    // optimization: pull width calculation out of the for loop, we only need to do it once
+    var dx = determineDx(sizingPizzas[0], size);
+    var newwidth = (sizingPizzas[0].offsetWidth + dx) + 'px';
 
-    // optimization: we'll create an array of new widths we can set all at once
-    var pizzaWidths = [];
-
-    // iterate over all of the sizing pizzas
+    // iterate over all of the sizing pizzas, set new width
     for (var i = 0; i < sizingPizzas.length; i++) {
-      var piz = sizingPizzas[i];
-
-      // optimization: do dx calculation in line
-      var oldwidth = piz.offsetWidth;
-      var oldsize = oldwidth / windowwidth;
-
-      var newsize = 1.00;
-      switch(size) {
-        case "1": newsize = 0.25; break;
-        case "2": newsize = 0.3333; break;
-        case "3": newsize = 0.5; break
-        default:
-          console.log("bug in changePizzaSizes()");
-      }
-      // optimization: save new width in array so we can batch them all together
-      var dx = (newsize - oldsize) * windowwidth;
-      var newwidth = (piz.offsetWidth + dx) + 'px';
-      pizzaWidths[i] = newwidth;
-    }
-
-    // optimization: set all the widths at once so we don't get forced synchronous layout
-    for (var j = 0; j < sizingPizzas.length; j++) {
-      sizingPizzas[j].style.width = pizzaWidths[j];
+      sizingPizzas[i].style.width = newwidth;
     }
   }
 
@@ -508,7 +511,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  // optimization since there are only 5 possible values for phase, we can put them
+  // optimization: since there are only 5 possible values for phase, we can put them
   // in a lookup table rather than compute them every time
   var phaseArray = [];
   for (var j = 0; j < 5; j++) {

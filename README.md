@@ -1,6 +1,7 @@
-##FEND P4: Website Performance Optimization Project
+##FEND P4: Website Performance Optimization - Final Project
+Student: Keith Thomson
 
-### General Instructions
+### Where to find it
 
 Source code can be found in this github repository in branch "gh-pages":
 https://github.com/jkt2407/frontend-nanodegree-mobile-portfolio
@@ -8,10 +9,11 @@ https://github.com/jkt2407/frontend-nanodegree-mobile-portfolio
 Website can be accessed through Github pages:
 http://jkt2407.github.io/frontend-nanodegree-mobile-portfolio/
 
-### Projects
+### Final Project Notes
 
 #### 1. Critical Rendering Path for index.html
 Optimizations:
+- Reduced the size of img/prfilepic.jpg and view/images/pizzeria.jpg
 - Removed the Google font "Open Sans" and used Arial instead
 - Put some styles from css/style.css (the styles that are used by index.html) in line in <head> and loaded the whole file css/style.css later, asynchronously
 - Removed Google Analytics JavaScript
@@ -27,23 +29,25 @@ Results: PageSpeed scores for
 #### 2. Framerate for pizza.html
 Optimizations:
 - In views/js/main.js,
--- Limited the number of rows and columns of pizzas created to the size of the screen
--- Kept an array of pizzas so we can access them quickly rather than having to traverse the DOM looking for them
--- In updatePositions(), made computation of "phase" a table lookup rather than recomputing it every time
+ - Limited the number of rows and columns of pizzas created to the size of the screen
+ - Kept an array of pizzas so we can access them quickly rather than having to traverse the DOM looking for them
+ - In updatePositions(), made computation of "phase" a table lookup rather than recomputing it every time
 
 To see these changes, search for "optimization:" in views/js/main.js.
 
 Results:
 
+Timeline display in DevTools shows consistent frame times at 60 fps or better
+
 #### 3. Computation Efficiency for pizza.html
 Optimizations:
 - In views/js/main.js, changePizzaSizes()
--- removed document.querySelectorAll() from "for" loop
--- removed call to determineDX and put code in line
--- pulled the calculation of windowwidth out of the "for" loop - we only need to do this once
--- saved the computed new width values in an array so they can be set together in one fell swoop, avoiding FSL
+ - removed document.querySelectorAll() from "for" loop
+ - removed computation of new width from "for" loop since all pizzas will be the same width
 
+Results:
 
+Time to resize pizzas is about 1. seconds, as reported by console
 
 ============================================================
 
