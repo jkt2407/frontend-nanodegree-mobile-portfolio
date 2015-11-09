@@ -426,11 +426,11 @@ var resizePizzas = function(size) {
     // optimization: pull document query out of the for loop
     var sizingPizzas = document.querySelectorAll(".randomPizzaContainer");
 
-    // optimization: we'll create an array of widths we can set all at once
-    var pizzaWidths = [];
-
    // optimization: pull windowwidth calculation out of the for loop, we only need to do it once
     var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
+
+    // optimization: we'll create an array of new widths we can set all at once
+    var pizzaWidths = [];
 
     // iterate over all of the sizing pizzas
     for (var i = 0; i < sizingPizzas.length; i++) {
@@ -454,7 +454,7 @@ var resizePizzas = function(size) {
       pizzaWidths[i] = newwidth;
     }
 
-    // set all the widths at once so we don't get forced synchronized layout
+    // optimization: set all the widths at once so we don't get forced synchronous layout
     for (var j = 0; j < sizingPizzas.length; j++) {
       sizingPizzas[j].style.width = pizzaWidths[j];
     }
@@ -500,7 +500,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
-// store references to the sliding pizzas in our own array for efficiency
+// optimization: store references to the sliding pizzas in our own array for efficiency
 var slidingPizzas = [];
 
 // Moves the sliding background pizzas based on scroll position
@@ -508,7 +508,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  // since there are only 5 possible values for phase, we can put them
+  // optimization since there are only 5 possible values for phase, we can put them
   // in a lookup table rather than compute them every time
   var phaseArray = [];
   for (var j = 0; j < 5; j++) {
@@ -535,11 +535,11 @@ window.addEventListener('scroll', updatePositions);
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
 
-  // compute how many colums we need to handle
+  // optimization: limit how many columns we need to the size of the screen
   var s = 256;
   var cols = (Math.floor(screen.width / s)) + 1;
 
-  // now create as many pizzas as fit on the screen
+  // optimization: only create as many rows of pizzas as fit on the screen
   for (var i = 0; i < 200; i++) {
     // if we're off the bottom of the screen, no need to create any more pizzas
     var y = (Math.floor(i / cols) * s);
@@ -555,7 +555,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = y + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
 
-    // store a reference to this pizza in our own array for later use
+    // optimization: store a reference to this pizza in our own array for later use
     slidingPizzas[i] = elem;
   }
   console.log("Created " + i + " pizzas");
