@@ -383,7 +383,6 @@ var pizzaElementGenerator = function(i) {
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
 
-
   pizzaDescriptionContainer.classList.add("col-md-6");
 
   pizzaName = document.createElement("h4");
@@ -424,22 +423,21 @@ var resizePizzas = function(size) {
    // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
 
-    // pull document query out of the for loop
+    // optimization: pull document query out of the for loop
     var sizingPizzas = document.querySelectorAll(".randomPizzaContainer");
 
-    // we'll create an array of widths we can set all at once
+    // optimization: we'll create an array of widths we can set all at once
     var pizzaWidths = [];
 
-   // pull windowwidth calculation out of the for loop, we only need to do it once
+   // optimization: pull windowwidth calculation out of the for loop, we only need to do it once
     var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
 
     // iterate over all of the sizing pizzas
     for (var i = 0; i < sizingPizzas.length; i++) {
       var piz = sizingPizzas[i];
 
-      // do dx calculation in line
+      // optimization: do dx calculation in line
       var oldwidth = piz.offsetWidth;
-//      console.log("oldwidth = " + oldwidth);
       var oldsize = oldwidth / windowwidth;
 
       var newsize = 1.00;
@@ -450,7 +448,7 @@ var resizePizzas = function(size) {
         default:
           console.log("bug in changePizzaSizes()");
       }
-      // save new width in array so we can batch them all together
+      // optimization: save new width in array so we can batch them all together
       var dx = (newsize - oldsize) * windowwidth;
       var newwidth = (piz.offsetWidth + dx) + 'px';
       pizzaWidths[i] = newwidth;
