@@ -515,11 +515,12 @@ function updatePositions() {
   // in a lookup table rather than compute them every time
   var phaseArray = [];
   for (var j = 0; j < 5; j++) {
-    phaseArray[j] = Math.sin((document.body.scrollTop / 1250) + (j % 5));
+    phaseArray[j] = 100 * (Math.sin((document.body.scrollTop / 1250) + (j % 5)));
   }
 
   for (var i = 0; i < slidingPizzas.length; i++) {
-    slidingPizzas[i].style.left = slidingPizzas[i].basicLeft + 100 * phaseArray[i % 5] + 'px';
+    var piz = slidingPizzas[i];
+    piz.style.left = piz.basicLeft + phaseArray[i % 5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
