@@ -32,7 +32,6 @@ Optimizations:
  - Limited the number of rows and columns of pizzas created -- just create as many as fit on screen
  - Kept an array of pizzas so we can access them quickly rather than having to traverse the DOM looking for them
  - In updatePositions(), made computation of "phase" a table lookup rather than recomputing it every time
- - In updatePositions(), batched up the reads and writes to minimize new layout calcs
 
 To see these changes, search for "optimization:" in views/js/main.js.
 

@@ -518,13 +518,10 @@ function updatePositions() {
     phaseArray[j] = 100 * (Math.sin((document.body.scrollTop / 1250) + (j % 5)));
   }
 
-  // optimization: batch up all the reads, then do the writes
-  var lefts = [];
+  // write the new pizza positions
   for (var i = 0; i < slidingPizzas.length; i++) {
-    lefts[i] = slidingPizzas[i].basicLeft;
-  }
-  for (var i = 0; i < slidingPizzas.length; i++) {
-    slidingPizzas[i].style.left = lefts[i] + phaseArray[i % 5] + 'px';
+    var pie = slidingPizzas[i];
+    pie.style.left = pie.basicLeft + phaseArray[i % 5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
