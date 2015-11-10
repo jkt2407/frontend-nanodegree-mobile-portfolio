@@ -38,7 +38,7 @@ To see these changes, search for "optimization:" in views/js/main.js.
 Results:
 
 - Timeline display in DevTools shows consistent frame times at 60 fps or better
-- Console output shows times under 0.2
+- Console output shows times usually under 0.2
  - Average time to generate last 10 frames: 0.17999999999992725ms
  - Average time to generate last 10 frames: 0.19650000000001455ms
  - Average time to generate last 10 frames: 0.18349999999991268ms
