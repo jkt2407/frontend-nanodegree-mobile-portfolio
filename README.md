@@ -62,7 +62,7 @@ Results:
 
  ***
 
-This was original contents of readme file:
+For reference, here are the original contents of the readme file:
 
 ## Website Performance Optimization portfolio project
 
