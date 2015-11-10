@@ -39,16 +39,16 @@ Results:
 
 - Timeline display in DevTools shows consistent frame times at 60 fps or better
 - Console output shows times under 0.2
- - main.js:500 Average time to generate last 10 frames: 0.17999999999992725ms
- - main.js:500 Average time to generate last 10 frames: 0.19650000000001455ms
- - main.js:500 Average time to generate last 10 frames: 0.18349999999991268ms
- - main.js:500 Average time to generate last 10 frames: 0.17950000000000726ms
- - main.js:500 Average time to generate last 10 frames: 0.21099999999996727ms
- - main.js:500 Average time to generate last 10 frames: 0.19399999999995998ms
- - main.js:500 Average time to generate last 10 frames: 0.1964999999999236ms
- - main.js:500 Average time to generate last 10 frames: 0.18350000000018554ms
- - main.js:500 Average time to generate last 10 frames: 0.18299999999981081ms
- - main.js:500 Average time to generate last 10 frames: 0.17150000000001456ms
+ - Average time to generate last 10 frames: 0.17999999999992725ms
+ - Average time to generate last 10 frames: 0.19650000000001455ms
+ - Average time to generate last 10 frames: 0.18349999999991268ms
+ - Average time to generate last 10 frames: 0.17950000000000726ms
+ - Average time to generate last 10 frames: 0.21099999999996727ms
+ - Average time to generate last 10 frames: 0.19399999999995998ms
+ - Average time to generate last 10 frames: 0.1964999999999236ms
+ - Average time to generate last 10 frames: 0.18350000000018554ms
+ - Average time to generate last 10 frames: 0.18299999999981081ms
+ - Average time to generate last 10 frames: 0.17150000000001456ms
 
 #### 3. Computation Efficiency for pizza.html
 Optimizations:
